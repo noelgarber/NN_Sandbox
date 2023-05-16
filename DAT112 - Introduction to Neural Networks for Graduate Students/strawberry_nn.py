@@ -21,12 +21,17 @@ image_height, image_width = x_train.shape[1], x_train.shape[2]
 model = keras.models.Sequential([
     keras.layers.Conv2D(32, (3, 3), activation='relu', input_shape=(image_height, image_width, 3)),
     keras.layers.MaxPooling2D((2, 2)),
+    keras.layers.Dropout(0.25),  # Add dropout with a rate of 0.25
     keras.layers.Conv2D(64, (3, 3), activation='relu'),
     keras.layers.MaxPooling2D((2, 2)),
+    keras.layers.Dropout(0.25),  # Add dropout with a rate of 0.25
     keras.layers.Conv2D(128, (3, 3), activation='relu'),
     keras.layers.MaxPooling2D((2, 2)),
+    keras.layers.Dropout(0.25),  # Add dropout with a rate of 0.25
     keras.layers.Flatten(),
+    keras.layers.Dropout(0.5),  # Add dropout with a rate of 0.5
     keras.layers.Dense(128, activation='relu'),
+    keras.layers.Dropout(0.5),  # Add dropout with a rate of 0.5
     keras.layers.Dense(3, activation='softmax')
 ])
 
